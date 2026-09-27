@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PocketSmart AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f9;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: #eee;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💰 PocketSmart AI</h1>
+
+    <p class="subtitle">
+        Smart Budget & Recommendation Assistant
+    </p>
+
+    <form action="/analyze" method="POST">
+
+        <label>Monthly Income</label>
+        <input type="number" name="income" required>
+
+        <label>Food Expenses</label>
+        <input type="number" name="food" required>
+
+        <label>Travel Expenses</label>
+        <input type="number" name="travel" required>
+
+        <label>Shopping Expenses</label>
+        <input type="number" name="shopping" required>
+
+        <label>Other Expenses</label>
+        <input type="number" name="other" required>
+
+        <button type="submit">
+            Analyze My Budget
+        </button>
+
+    </form>
+
+    {% if recommendation %}
+
+    <div class="result">
+
+        <p><b>Total Expenses:</b> ₹{{ total_expense }}</p>
+
+        <p><b>Remaining Balance:</b> ₹{{ balance }}</p>
+
+        <p><b>Savings:</b> {{ savings_percentage }}%</p>
+
+        <p><b>Recommendation:</b></p>
+
+        <p>{{ recommendation }}</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
